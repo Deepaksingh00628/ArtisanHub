@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtisanHub - Handmade Art & Creations</title>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="logo">
-            <!-- Placeholder SVG Logo -->
+            <!-- Placeholder SVG Logo (Replace with custom SVG from seeklogo.com) -->
             <svg width="50" height="50" viewBox="0 0 24 24" fill="#FF6600">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
             </svg>
@@ -18,7 +20,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -114,5 +116,30 @@
             </form>
         </div>
     </div>
+
+    <script>
+        const popupTriggers = document.querySelectorAll('.popup-trigger');
+        const popup = document.querySelector('.popup');
+        const closeButton = document.querySelector('.close');
+        const popupTitle = document.querySelector('#popup-title');
+
+        popupTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                popupTitle.textContent = trigger.textContent;
+                popup.style.display = 'flex';
+            });
+        });
+
+        closeButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
