@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanHub - Handmade Art & Creations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <!-- Placeholder SVG Logo -->
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="#FF6600">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            <span>ArtisanHub</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#seller" class="seller-link">Become a Seller</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="#login" class="popup-trigger">Login</a>
+            <a href="#register" class="popup-trigger">Register</a>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover Unique Handmade Art</h1>
+            <p>Explore one-of-a-kind creations from talented artisans.</p>
+            <a href="products.html" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Paintings</h3>
+                <p>Original artwork to brighten your space.</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-gem"></i>
+                <h3>Jewelry</h3>
+                <p>Handcrafted pieces with unique designs.</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-mug-hot"></i>
+                <h3>Ceramics</h3>
+                <p>Beautifully crafted pottery and decor.</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-tshirt"></i>
+                <h3>Textiles</h3>
+                <p>Handwoven fabrics and clothing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"I found the most beautiful handmade necklace here! The quality is amazing."</p>
+                <h4>- Sarah M.</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"ArtisanHub has unique art that you can't find anywhere else. Love it!"</p>
+                <h4>- James T.</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seller Section -->
+    <section class="seller-section" id="seller">
+        <h2>Join Our Artisan Community</h2>
+        <p>Showcase and sell your handmade creations to a global audience.</p>
+        <a href="#seller-signup" class="cta-button">Become a Seller</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 ArtisanHub. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <!-- Popup for Login/Register -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2 id="popup-title">Login</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
