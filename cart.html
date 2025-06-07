@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart - ArtisanHub</title>
+    <title>Cart - Craftee</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
-            <svg width="50" height="50" viewBox="0 0 24 24" fill="#FF6600">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"/>
+                <path d="M12 15c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z"/>
+                <path d="M12 15c-1.1 0-2 .9-2 2s.9 2 2 2"/>
             </svg>
-            <span>ArtisanHub</span>
+            <span>Craftee</span>
         </div>
         <nav>
             <ul>
@@ -33,89 +34,93 @@
         </div>
     </header>
 
-    <!-- Cart Section -->
     <section class="cart">
         <h2>Your Cart</h2>
         <div class="cart-items">
             <div class="cart-item">
-                <img src="https://images.unsplash.com/photo-1506808547685-216ea1ee47e2?auto=format&fit=crop&w=100&q=80" alt="Abstract Painting">
+                <img src="https://images.unsplash.com/photo-1507477338594-4891e0f33c54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Handmade Vase">
                 <div class="cart-item-details">
-                    <h3>Abstract Painting</h3>
-                    <p>$150.00</p>
-                    <div class="quantity">
-                        <label for="qty1">Qty:</label>
-                        <input type="number" id="qty1" value="1" min="1">
-                    </div>
-                    <button class="remove-item">Remove</button>
-                </div>
-            </div>
-            <div class="cart-item">
-                <img src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?auto=format&fit=crop&w=100&q=80" alt="Handmade Necklace">
-                <div class="cart-item-details">
-                    <h3>Handmade Necklace</h3>
+                    <h3>Handmade Vase</h3>
                     <p>$45.00</p>
                     <div class="quantity">
-                        <label for="qty2">Qty:</label>
-                        <input type="number" id="qty2" value="1" min="1">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" value="1" min="1">
                     </div>
-                    <button class="remove-item">Remove</button>
                 </div>
+                <button class="remove-item">Remove</button>
+            </div>
+            <div class="cart-item">
+                <img src="https://images.unsplash.com/photo-1527628217451-b2414a1ee733?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Artisan Necklace">
+                <div class="cart-item-details">
+                    <h3>Artisan Necklace</h3>
+                    <p>$30.00</p>
+                    <div class="quantity">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" value="1" min="1">
+                    </div>
+                </div>
+                <button class="remove-item">Remove</button>
             </div>
         </div>
         <div class="cart-summary">
-            <h3>Total: $195.00</h3>
+            <h3>Total: $75.00</h3>
             <a href="checkout.html" class="cta-button">Proceed to Checkout</a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>© 2025 ArtisanHub. All rights reserved.</p>
+        <p>&copy; 2025 Craftee. All rights reserved.</p>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
     </footer>
 
-    <!-- Popup for Login/Register -->
-    <div class="popup" id="popup">
+    <div class="popup" id="login-popup">
         <div class="popup-content">
-            <span class="close">×</span>
-            <h2 id="popup-title">Login</h2>
+            <span class="close">&times;</span>
+            <h2>Login</h2>
             <form>
                 <label for="email">Email:</label>
                 <input type="email" id="email" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" required>
-                <button type="submit">Submit</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     </div>
 
-    <script>
-        const popupTriggers = document.querySelectorAll('.popup-trigger');
-        const popup = document.querySelector('.popup');
-        const closeButton = document.querySelector('.close');
-        const popupTitle = document.querySelector('#popup-title');
+    <div class="popup" id="register-popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
 
-        popupTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                popupTitle.textContent = trigger.textContent;
-                popup.style.display = 'flex';
-            });
-        });
-
-        closeButton.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-    </script>
+    <div class="popup" id="seller-popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Become a Seller</h2>
+            <form>
+                <label for="name">Business Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="description">Description:</label>
+                <input type="text" id="description" required>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
