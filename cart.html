@@ -10,18 +10,17 @@
 </head>
 <body>
     <header>
-        <div class="logo">
+        <a href="index.html" class="logo">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 3v12"/>
                 <path d="M12 15c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z"/>
                 <path d="M12 15c-1.1 0-2 .9-2 2s.9 2 2 2"/>
             </svg>
             <span>Craftee</span>
-        </div>
+        </a>
         <button class="hamburger"><i class="fas fa-bars"></i></button>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -30,41 +29,17 @@
         </nav>
         <div class="user-actions">
             <a href="#login" class="popup-trigger">Login</a>
-            <a href="#register" class="popup-trigger">Register</a>
-            <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
         </div>
     </header>
 
     <section class="cart">
         <h2>Your Cart</h2>
-        <div class="cart-items">
-            <div class="cart-item">
-                <img src="https://images.unsplash.com/photo-1507477338594-4891e0f33c54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Handmade Vase">
-                <div class="cart-item-details">
-                    <h3>Handmade Vase</h3>
-                    <p>$45.00</p>
-                    <div class="quantity">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" value="1" min="1">
-                    </div>
-                </div>
-                <button class="remove-item">Remove</button>
-            </div>
-            <div class="cart-item">
-                <img src="https://images.unsplash.com/photo-1527628217451-b2414a1ee733?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Artisan Necklace">
-                <div class="cart-item-details">
-                    <h3>Artisan Necklace</h3>
-                    <p>$30.00</p>
-                    <div class="quantity">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" value="1" min="1">
-                    </div>
-                </div>
-                <button class="remove-item">Remove</button>
-            </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items populated dynamically -->
         </div>
         <div class="cart-summary">
-            <h3>Total: $75.00</h3>
+            <h3>Total: $<span id="cart-total">0.00</span></h3>
             <a href="checkout.html" class="cta-button">Proceed to Checkout</a>
         </div>
     </section>
@@ -82,12 +57,15 @@
         <div class="popup-content">
             <span class="close">×</span>
             <h2>Login</h2>
-            <form>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
+            <form id="login-form">
+                <label for="login-name">Name:</label>
+                <input type="text" id="login-name" required>
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
                 <button type="submit">Login</button>
+                <p>Not registered? <a href="#register" class="popup-trigger">Register here</a></p>
             </form>
         </div>
     </div>
@@ -96,31 +74,43 @@
         <div class="popup-content">
             <span class="close">×</span>
             <h2>Register</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
+            <form id="register-form">
+                <label for="register-name">Name:</label>
+                <input type="text" id="register-name" required>
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" required>
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" required>
                 <button type="submit">Register</button>
             </form>
         </div>
     </div>
 
-    <div class="popup" id="seller-popup">
+    <div class="popup" id="seller-product-popup">
         <div class="popup-content">
             <span class="close">×</span>
-            <h2>Become a Seller</h2>
-            <form>
-                <label for="name">Business Name:</label>
-                <input type="text" id="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-                <label for="description">Description:</label>
-                <input type="text" id="description" required>
-                <button type="submit">Apply</button>
+            <h2>Add Your Product</h2>
+            <form id="seller-product-form">
+                <label for="product-image">Product Image:</label>
+                <input type="file" id="product-image" accept="image/*" required>
+                <label for="product-price">Price ($):</label>
+                <input type="number" id="product-price" min="0" step="0.01" required>
+                <button type="submit">Submit Product</button>
             </form>
+        </div>
+    </div>
+
+    <div class="popup" id="add-to-cart-popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Add to Cart</h2>
+            <p id="cart-product-name"></p>
+            <div class="quantity-controls">
+                <button type="button" class="quantity-btn minus">-</button>
+                <input type="number" id="cart-quantity" value="1" min="1">
+                <button type="button" class="quantity-btn plus">+</button>
+            </div>
+            <button id="confirm-add-to-cart">Confirm</button>
         </div>
     </div>
 
