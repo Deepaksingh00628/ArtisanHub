@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - ArtisanHub</title>
+    <title>Checkout - Craftee</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
-            <svg width="50" height="50" viewBox="0 0 24 24" fill="#FF6600">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"/>
+                <path d="M12 15c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z"/>
+                <path d="M12 15c-1.1 0-2 .9-2 2s.9 2 2 2"/>
             </svg>
-            <span>ArtisanHub</span>
+            <span>Craftee</span>
         </div>
         <nav>
             <ul>
@@ -33,88 +34,92 @@
         </div>
     </header>
 
-    <!-- Checkout Section -->
     <section class="checkout">
         <h2>Checkout</h2>
         <div class="checkout-form">
             <form>
-                <h3>Shipping Information</h3>
+                <h3>Billing Information</h3>
                 <label for="name">Full Name:</label>
                 <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
                 <label for="address">Address:</label>
                 <input type="text" id="address" required>
                 <label for="city">City:</label>
                 <input type="text" id="city" required>
-                <label for="zip">Zip Code:</label>
+                <label for="zip">ZIP Code:</label>
                 <input type="text" id="zip" required>
-
                 <h3>Payment Information</h3>
                 <label for="card">Card Number:</label>
                 <input type="text" id="card" required>
                 <label for="expiry">Expiry Date:</label>
-                <input type="text" id="expiry" placeholder="MM/YY" required>
+                <input type="text" id="expiry" required>
                 <label for="cvv">CVV:</label>
                 <input type="text" id="cvv" required>
-
                 <button type="submit" class="cta-button">Place Order</button>
             </form>
             <div class="order-summary">
                 <h3>Order Summary</h3>
-                <p>Abstract Painting: $150.00</p>
-                <p>Handmade Necklace: $45.00</p>
-                <p><strong>Total: $195.00</strong></p>
+                <p>Handmade Vase: $45.00</p>
+                <p>Artisan Necklace: $30.00</p>
+                <p><strong>Total: $75.00</strong></p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>© 2025 ArtisanHub. All rights reserved.</p>
+        <p>&copy; 2025 Craftee. All rights reserved.</p>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
     </footer>
 
-    <!-- Popup for Login/Register -->
-    <div class="popup" id="popup">
+    <div class="popup" id="login-popup">
         <div class="popup-content">
-            <span class="close">×</span>
-            <h2 id="popup-title">Login</h2>
+            <span class="close">&times;</span>
+            <h2>Login</h2>
             <form>
                 <label for="email">Email:</label>
                 <input type="email" id="email" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" required>
-                <button type="submit">Submit</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     </div>
 
-    <script>
-        const popupTriggers = document.querySelectorAll('.popup-trigger');
-        const popup = document.querySelector('.popup');
-        const closeButton = document.querySelector('.close');
-        const popupTitle = document.querySelector('#popup-title');
+    <div class="popup" id="register-popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
 
-        popupTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                popupTitle.textContent = trigger.textContent;
-                popup.style.display = 'flex';
-            });
-        });
-
-        closeButton.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-    </script>
+    <div class="popup" id="seller-popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Become a Seller</h2>
+            <form>
+                <label for="name">Business Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="description">Description:</label>
+                <input type="text" id="description" required>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
