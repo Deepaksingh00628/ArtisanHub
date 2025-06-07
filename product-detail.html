@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category - Craftee</title>
+    <title>Product Detail - Craftee</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -27,15 +27,79 @@
             </ul>
         </nav>
         <div class="user-actions">
+            <button id="voice-search"><i class="fas fa-microphone"></i></button>
             <a href="#login" class="popup-trigger">Login</a>
+            <a href="wishlist.html" class="wishlist-link"><i class="fas fa-heart"></i></a>
             <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span class="cart-count"></span></a>
         </div>
     </header>
 
-    <section class="products">
-        <h2 id="category-title"></h2>
-        <div class="product-grid" id="category-products">
-            <!-- Products will be populated dynamically -->
+    <section class="product-detail">
+        <div class="product-detail-container">
+            <div class="product-image">
+                <img id="product-image" src="" alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1 id="product-name"></h1>
+                <p id="product-price" class="price"></p>
+                <div class="delivery-info">
+                    <p>Free delivery by June 12, 2025</p>
+                </div>
+                <div class="product-actions">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="buy-now">Buy Now</button>
+                    <button class="add-to-wishlist">Add to Wishlist</button>
+                </div>
+                <div class="product-description">
+                    <h3>Product Description</h3>
+                    <p id="product-description"></p>
+                </div>
+                <div class="product-specifications">
+                    <h3>Specifications</h3>
+                    <ul id="product-specifications"></ul>
+                </div>
+                <div class="seller-info">
+                    <h3>Seller Information</h3>
+                    <p><strong>Name:</strong> <span id="seller-name"></span></p>
+                    <p><strong>Address:</strong> <span id="seller-address"></span></p>
+                    <p><strong>Contact:</strong> <span id="seller-contact"></span></p>
+                </div>
+                <div class="product-reviews">
+                    <h3>Customer Reviews</h3>
+                    <div id="average-rating" class="rating"></div>
+                    <form id="review-form">
+                        <label for="rating">Rate this product:</label>
+                        <select id="rating" required>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                        <label for="review-text">Your Review:</label>
+                        <textarea id="review-text" required></textarea>
+                        <button type="submit">Submit Review</button>
+                    </form>
+                    <div id="reviews-list"></div>
+                </div>
+                <div class="product-qa">
+                    <h3>Questions & Answers</h3>
+                    <form id="qa-form">
+                        <label for="question">Ask a question:</label>
+                        <textarea id="question" required></textarea>
+                        <button type="submit">Submit Question</button>
+                    </form>
+                    <div id="qa-list"></div>
+                </div>
+            </div>
+        </div>
+        <div class="related-products">
+            <h3>Related Products</h3>
+            <div class="product-grid" id="related-products"></div>
+        </div>
+        <div class="personalized-recommendations">
+            <h3>Customers Also Viewed</h3>
+            <div class="product-grid" id="personalized-recommendations"></div>
         </div>
     </section>
 
