@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
-            <!-- Placeholder SVG Logo (Replace with custom SVG from seeklogo.com) -->
-            <svg width="50" height="50" viewBox="0 0 24 24" fill="#FF6600">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"/>
+                <path d="M12 15c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z"/>
+                <path d="M12 15c-1.1 0-2 .9-2 2s.9 2 2 2"/>
             </svg>
             <span>Craftee</span>
         </div>
@@ -34,112 +34,113 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="hero-content">
             <h1>Discover Unique Handmade Art</h1>
-            <p>Explore one-of-a-kind creations from talented artisans.</p>
+            <p>Explore our curated collection of artisanal creations.</p>
             <a href="products.html" class="cta-button">Shop Now</a>
         </div>
     </section>
 
-    <!-- Categories Section -->
     <section class="categories">
-        <h2>Shop by Category</h2>
+        <h2>Explore Our Categories</h2>
         <div class="category-grid">
             <div class="category-card">
                 <i class="fas fa-paint-brush"></i>
-                <h3>Paintings</h3>
-                <p>Original artwork to brighten your space.</p>
+                <h3>Art</h3>
+                <p>Hand-painted masterpieces.</p>
             </div>
             <div class="category-card">
                 <i class="fas fa-gem"></i>
                 <h3>Jewelry</h3>
-                <p>Handcrafted pieces with unique designs.</p>
-            </div>
-            <div class="category-card">
-                <i class="fas fa-mug-hot"></i>
-                <h3>Ceramics</h3>
-                <p>Beautifully crafted pottery and decor.</p>
+                <p>Unique handcrafted pieces.</p>
             </div>
             <div class="category-card">
                 <i class="fas fa-tshirt"></i>
-                <h3>Textiles</h3>
-                <p>Handwoven fabrics and clothing.</p>
+                <h3>Fashion</h3>
+                <p>Custom-made apparel.</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-home"></i>
+                <h3>Home Decor</h3>
+                <p>Artisanal home accents.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section class="testimonials">
         <h2>What Our Customers Say</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card">
-                <p>"I found the most beautiful handmade necklace here! The quality is amazing."</p>
+                <p>"Absolutely stunning pieces! The quality is unmatched."</p>
                 <h4>- Sarah M.</h4>
             </div>
             <div class="testimonial-card">
-                <p>"Craftee has unique art that you can't find anywhere else. Love it!"</p>
-                <h4>- James T.</h4>
+                <p>"I love the unique designs and personal touch."</p>
+                <h4>- John D.</h4>
             </div>
         </div>
     </section>
 
-    <!-- Seller Section -->
     <section class="seller-section" id="seller">
-        <h2>Join Our Artisan Community</h2>
-        <p>Showcase and sell your handmade creations to a global audience.</p>
-        <a href="#seller-signup" class="cta-button">Become a Seller</a>
+        <h2>Become a Seller</h2>
+        <p>Join our community of artisans and showcase your creations.</p>
+        <a href="#seller" class="cta-button popup-trigger">Start Selling</a>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>© 2025 Craftee. All rights reserved.</p>
+        <p>&copy; 2025 Craftee. All rights reserved.</p>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
     </footer>
 
-    <!-- Popup for Login/Register -->
-    <div class="popup" id="popup">
+    <div class="popup" id="login-popup">
         <div class="popup-content">
-            <span class="close">×</span>
-            <h2 id="popup-title">Login</h2>
+            <span class="close">&times;</span>
+            <h2>Login</h2>
             <form>
                 <label for="email">Email:</label>
                 <input type="email" id="email" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" required>
-                <button type="submit">Submit</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     </div>
 
-    <script>
-        const popupTriggers = document.querySelectorAll('.popup-trigger');
-        const popup = document.querySelector('.popup');
-        const closeButton = document.querySelector('.close');
-        const popupTitle = document.querySelector('#popup-title');
+    <div class="popup" id="register-popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
 
-        popupTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                popupTitle.textContent = trigger.textContent;
-                popup.style.display = 'flex';
-            });
-        });
-
-        closeButton.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-    </script>
+    <div class="popup" id="seller-popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Become a Seller</h2>
+            <form>
+                <label for="name">Business Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="description">Description:</label>
+                <input type="text" id="description" required>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
