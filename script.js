@@ -1,10 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize cart and registration status
+document.addEventListener('DOMContentLoaded', function() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let isRegistered = localStorage.getItem('isRegistered') === 'true';
     let currentProduct = null;
 
-    // Update cart count in header
     const updateCartCount = () => {
         const uniqueItems = new Set(cart.map(item => item.name)).size;
         document.querySelectorAll('.cart-count').forEach(el => {
@@ -12,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Update cart display
     const updateCartDisplay = () => {
         const cartItems = document.getElementById('cart-items');
         const cartTotal = document.getElementById('cart-total');
@@ -28,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${item.image}" alt="${item.name}">
                 <div class="cart-item-details">
                     <h3>${item.name}</h3>
-                    <p>$${item.price}</p>
+                    <p>₹${item.price}</p>
                     <div class="quantity-controls">
                         <button class="quantity-btn minus" data-index="${index}">-</button>
                         <input type="number" class="quantity" value="${item.quantity}" min="1" data-index="${index}">
@@ -45,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartCount();
     };
 
-    // Update order summary in checkout
     const updateOrderSummary = () => {
         const orderItems = document.getElementById('order-items');
         const orderTotal = document.getElementById('order-total');
@@ -56,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cart.forEach(item => {
             const p = document.createElement('p');
-            p.textContent = `${item.name}: $${(item.price * item.quantity).toFixed(2)} (Qty: ${item.quantity})`;
+            p.textContent = `${item.name}: ₹${(item.price * item.quantity).toFixed(2)} (Qty: ${item.quantity})`;
             orderItems.appendChild(p);
             total += item.price * item.quantity;
         });
@@ -64,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         orderTotal.textContent = total.toFixed(2);
     };
 
-    // Handle hamburger menu
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -81,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle popups
     const showPopup = (id) => {
         document.querySelectorAll('.popup').forEach(popup => popup.style.display = 'none');
         document.getElementById(id).style.display = 'flex';
@@ -102,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         close.addEventListener('click', closePopups);
     });
 
-    // Handle add to cart
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', () => {
             const card = button.closest('.product-card');
@@ -117,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle quantity controls in add-to-cart popup
     const quantityInput = document.getElementById('cart-quantity');
     const minusBtn = document.querySelector('#add-to-cart-popup .minus');
     const plusBtn = document.querySelector('#add-to-cart-popup .plus');
@@ -134,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Confirm add to cart
     document.getElementById('confirm-add-to-cart')?.addEventListener('click', () => {
         const quantity = parseInt(quantityInput.value);
         const existingItem = cart.find(item => item.name === currentProduct.name);
@@ -150,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closePopups();
     });
 
-    // Handle cart quantity changes and removal
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('quantity-btn') || e.target.classList.contains('remove-item')) {
             const index = parseInt(e.target.dataset.index);
@@ -178,14 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle login
     document.getElementById('login-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Simulate login (no backend)
         closePopups();
     });
 
-    // Handle register
     document.getElementById('register-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
         isRegistered = true;
@@ -194,15 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showPopup('seller-product-popup');
     });
 
-    // Handle seller product submission
     document.getElementById('seller-product-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Simulate product submission (no backend)
         alert('Product submitted successfully!');
         closePopups();
     });
 
-    // Handle checkout
     document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!isRegistered) {
@@ -217,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initialize displays
     updateCartDisplay();
     updateOrderSummary();
 });
