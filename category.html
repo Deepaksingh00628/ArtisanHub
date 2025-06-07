@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category - Craftee</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12"/>
+                <path d="M12 15c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4z"/>
+                <path d="M12 15c-1.1 0-2 .9-2 2s.9 2 2 2"/>
+            </svg>
+            <span>Craftee</span>
+        </a>
+        <button class="hamburger"><i class="fas fa-bars"></i></button>
+        <nav>
+            <ul>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#seller" class="seller-link">Become a Seller</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="#login" class="popup-trigger">Login</a>
+            <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+        </div>
+    </header>
+
+    <section class="products">
+        <h2 id="category-title">Category Products</h2>
+        <div class="product-grid" id="category-products">
+            <!-- Products will be populated dynamically -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Craftee. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <div class="popup" id="login-popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="login-name">Name:</label>
+                <input type="text" id="login-name" required>
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+                <button type="submit">Login</button>
+                <p>Not registered? <a href="#register" class="popup-trigger">Register here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="register-popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Register</h2>
+            <form id="register-form">
+                <label for="register-name">Name:</label>
+                <input type="text" id="register-name" required>
+                <label for="register-email">Email:</label>
+                <input type="email" id="register-email" required>
+                <label for="register-password">Password:</label>
+                <input type="password" id="register-password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="seller-product-popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Add Your Product</h2>
+            <form id="seller-product-form">
+                <label for="product-image">Product Image:</label>
+                <input type="file" id="product-image" accept="image/*" required>
+                <label for="product-price">Price (₹):</label>
+                <input type="number" id="product-price" min="0" step="0.01" required>
+                <button type="submit">Submit Product</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup" id="add-to-cart-popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Add to Cart</h2>
+            <p id="cart-product-name"></p>
+            <div class="quantity-controls">
+                <button type="button" class="quantity-btn minus">-</button>
+                <input type="number" id="cart-quantity" value="1" min="1">
+                <button type="button" class="quantity-btn plus">+</button>
+            </div>
+            <button id="confirm-add-to-cart">Confirm</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

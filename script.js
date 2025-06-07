@@ -3,6 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     let isRegistered = localStorage.getItem('isRegistered') === 'true';
     let currentProduct = null;
 
+    // Predefined product list for categories
+    const productsList = [
+        // Existing Products
+        { name: "Handmade Vase", price: 3750, category: "Home Decor", image: "https://images.pexels.com/photos/6782345/pexels-photo-6782345.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Artisan Necklace", price: 2500, category: "Jewelry", image: "https://images.unsplash.com/photo-1611598735228-4a30f5e9b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+        { name: "Woven Basket", price: 2083, category: "Home Decor", image: "https://images.pexels.com/photos/191360/pexels-photo-191360.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Ceramic Plate", price: 2917, category: "Home Decor", image: "https://images.pexels.com/photos/6096278/pexels-photo-6096278.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        // Art Category
+        { name: "Abstract Painting", price: 5000, category: "Art", image: "https://images.pexels.com/photos/1252869/pexels-photo-1252869.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Charcoal Sketch", price: 3000, category: "Art", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+        { name: "Watercolor Portrait", price: 4500, category: "Art", image: "https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        // Jewelry Category
+        { name: "Beaded Bracelet", price: 1800, category: "Jewelry", image: "https://images.pexels.com/photos/2785557/pexels-photo-2785557.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Silver Earrings", price: 2200, category: "Jewelry", image: "https://images.unsplash.com/photo-1605101202151-393d6e39e3c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+        // Fashion Category
+        { name: "Handwoven Scarf", price: 1500, category: "Fashion", image: "https://images.pexels.com/photos/375880/pexels-photo-375880.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Embroidered Kurta", price: 3500, category: "Fashion", image: "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Leather Belt", price: 2000, category: "Fashion", image: "https://images.unsplash.com/photo-1591561954650-2e718e3a15f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+        // Home Decor Category
+        { name: "Wooden Wall Art", price: 4000, category: "Home Decor", image: "https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=300" },
+        { name: "Macrame Plant Hanger", price: 1200, category: "Home Decor", image: "https://images.unsplash.com/photo-1596462502278-27bf71533222?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+    ];
+
     const updateCartCount = () => {
         const uniqueItems = new Set(cart.map(item => item.name)).size;
         document.querySelectorAll('.cart-count').forEach(el => {
@@ -58,6 +81,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         orderTotal.textContent = total.toFixed(2);
+    };
+
+    // Populate Category Page
+    const populateCategoryProducts = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        const categoryTitle = document.getElementById('category-title');
+        const categoryProducts = document.getElementById('category-products');
+
+        if (category && categoryTitle && categoryProducts) {
+            categoryTitle.textContent = `${category} Products`;
+            const filteredProducts = productsList.filter(product => product.category === category);
+
+            categoryProducts.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.dataset.name = product.name;
+                productCard.dataset.price = product.price;
+                productCard.dataset.category = product.category;
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>₹${product.price}</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                `;
+                categoryProducts.appendChild(productCard);
+            });
+        }
+    };
+
+    // Search Functionality
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+    if (searchButton && searchInput) {
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            if (query) {
+                window.location.href = `products.html?search=${encodeURIComponent(query)}`;
+            }
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchButton.click();
+            }
+        });
+    }
+
+    // Filter Products on Products Page Based on Search
+    const filterProductsBySearch = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search')?.toLowerCase();
+        const productGrid = document.querySelector('.product-grid');
+
+        if (searchQuery && productGrid) {
+            const productCards = productGrid.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const productName = card.dataset.name.toLowerCase();
+                if (productName.includes(searchQuery)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
     };
 
     const hamburger = document.querySelector('.hamburger');
@@ -201,6 +290,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Initialize page-specific functions
     updateCartDisplay();
     updateOrderSummary();
+    populateCategoryProducts();
+    filterProductsBySearch();
 });
