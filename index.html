@@ -27,7 +27,9 @@
             </ul>
         </nav>
         <div class="user-actions">
+            <button id="voice-search"><i class="fas fa-microphone"></i></button>
             <a href="#login" class="popup-trigger">Login</a>
+            <a href="wishlist.html" class="wishlist-link"><i class="fas fa-heart"></i></a>
             <a href="cart.html" class="cart-link"><i class="fas fa-shopping-cart"></i><span class="cart-count"></span></a>
         </div>
     </header>
@@ -37,11 +39,11 @@
             <h1>Discover Unique Handmade Art</h1>
             <p>Explore our curated collection of artisanal creations.</p>
             <div class="hero-actions">
-                <a href="products.html" class="cta-button">Shop Now</a>
                 <div class="search-bar">
                     <input type="text" id="search-input" placeholder="Search products...">
                     <button id="search-button"><i class="fas fa-search"></i></button>
                 </div>
+                <a href="products.html" class="cta-button">Shop Now</a>
             </div>
         </div>
     </section>
@@ -49,22 +51,22 @@
     <section class="categories">
         <h2>Explore Our Categories</h2>
         <div class="category-grid">
-            <a href="category.html?category=Art" class="category-card">
+            <a href="products.html?category=Art" class="category-card">
                 <i class="fas fa-paint-brush"></i>
                 <h3>Art</h3>
                 <p>Hand-painted masterpieces.</p>
             </a>
-            <a href="category.html?category=Jewelry" class="category-card">
+            <a href="products.html?category=Jewelry" class="category-card">
                 <i class="fas fa-gem"></i>
                 <h3>Jewelry</h3>
                 <p>Unique handcrafted pieces.</p>
             </a>
-            <a href="category.html?category=Fashion" class="category-card">
+            <a href="products.html?category=Fashion" class="category-card">
                 <i class="fas fa-tshirt"></i>
                 <h3>Fashion</h3>
                 <p>Custom-made apparel.</p>
             </a>
-            <a href="category.html?category=Home Decor" class="category-card">
+            <a href="products.html?category=Home Decor" class="category-card">
                 <i class="fas fa-home"></i>
                 <h3>Home Decor</h3>
                 <p>Artisanal home accents.</p>
@@ -95,7 +97,7 @@
     <section class="about" id="about">
         <h2>About Us</h2>
         <p>Craftee is dedicated to empowering small artisans across India by providing a platform to showcase and sell their unique handmade art and creations.</p>
-        <p class="contact-info">Reach us at: 896000321 | <a href="mailto:craftee@.com">craftee@.com</a></p>
+        <p class="contact-info">Reach us at: 896000321 | <a href="mailto:support@craftee.com">support@craftee.com</a></p>
     </section>
 
     <footer>
@@ -145,10 +147,19 @@
             <span class="close">×</span>
             <h2>Add Your Product</h2>
             <form id="seller-product-form">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" required>
                 <label for="product-image">Product Image:</label>
                 <input type="file" id="product-image" accept="image/*" required>
                 <label for="product-price">Price (₹):</label>
                 <input type="number" id="product-price" min="0" step="0.01" required>
+                <label for="product-category">Category:</label>
+                <select id="product-category" required>
+                    <option value="Home Decor">Home Decor</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Art">Art</option>
+                    <option value="Fashion">Fashion</option>
+                </select>
                 <button type="submit">Submit Product</button>
             </form>
         </div>
